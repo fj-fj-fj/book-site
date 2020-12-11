@@ -177,3 +177,5 @@ local.py
 foo.py
 bar.py
 sick.py
+requirements-dev.txt
+story/
