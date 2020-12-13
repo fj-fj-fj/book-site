@@ -8,9 +8,13 @@ class Book(models.Model):
     author = models.CharField(max_length=255)
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='my_books')
     readers = models.ManyToManyField(User, through='UserBookRelation', related_name='books')
+    discount = models.DecimalField(max_digits=5, decimal_places=2, default=0)
 
     def __str__(self):
         return f'Id {self.id}: {self.name}'
+
+    def has_discount(self):
+        return self.discount != 0
 
 
     # NOTE: сделать is_published, черновик (разные состояния книги),

@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.db.models import Count, Case, When, Avg
+from django.db.models import Count, Case, When, Avg, F, ExpressionWrapper, DecimalField
 from django.test import TestCase
 
 from store.models import Book, UserBookRelation
@@ -12,7 +12,7 @@ class BookSerializerTestCase(TestCase):
         user2 = User.objects.create(username='user2')
         user3 = User.objects.create(username='user3')
 
-        book1 = Book.objects.create(name='test1', price=25, author='author 1')
+        book1 = Book.objects.create(name='test1', price=25, author='author 1', discount=3)
         book2 = Book.objects.create(name='test2', price=55, author='author 2')
 
         UserBookRelation.objects.create(user=user1, book=book1, like=True, rate=5)
@@ -25,10 +25,10 @@ class BookSerializerTestCase(TestCase):
 
         books = Book.objects.all().annotate(
             annotated_likes=Count(Case(When(userbookrelation__like=True, then=1))),
-            rating=Avg('userbookrelation__rate')
+            rating=Avg('userbookrelation__rate'),
+            discount_price=F('price') - F('discount')
         ).order_by('id')
         data = BooksSerializer(books, many=True).data
-        print(data)
         expected_data = [
             {
                 'id': book1.id,
@@ -37,7 +37,9 @@ class BookSerializerTestCase(TestCase):
                 'author': 'author 1',
                 'likes_count': 3,
                 'annotated_likes': 3,
-                'rating': '4.67'
+                'rating': '4.67',
+                'discount': '3.00',
+                'discount_price': 22.0
             },
             {
                 'id': book2.id,
@@ -46,7 +48,9 @@ class BookSerializerTestCase(TestCase):
                 'author': 'author 2',
                 'likes_count': 2,
                 'annotated_likes': 2,
-                'rating': '3.50'
+                'rating': '3.50',
+                'discount': '0.00',
+                'discount_price': 55.0
             }
         ]
         self.assertEqual(expected_data, data)
