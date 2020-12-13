@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
@@ -28,7 +29,14 @@ router.register(r'book_relation', UserBookRelationView)
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('', include('social_django.urls', namespace='social')),
-    path('auth/', auth)
+    path('auth/', auth),
 ]
 
 urlpatterns += router.urls
+
+if settings.DEBUG:
+    import debug_toolbar
+    import mimetypes
+
+    mimetypes.add_type("application/javascript", ".js", True)
+    urlpatterns = [path('__debug__/', include(debug_toolbar.urls))] + urlpatterns

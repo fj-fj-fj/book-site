@@ -27,13 +27,13 @@ class BooksApiTestCase(APITestCase):
             annotated_likes=Count(Case(When(userbookrelation__like=True, then=1))),
             rating=Avg('userbookrelation__rate'),
             discount_price=F('price') - F('discount'),
-        )
+        ).order_by('id')
         serializer_data = BooksSerializer(books, many=True).data
         self.assertEqual(status.HTTP_200_OK, response.status_code)
         self.assertEqual(serializer_data, response.data)
         book1, = [book for book in serializer_data if book.get('name') == 'test1']
         self.assertEqual(book1['rating'], '5.00')
-        self.assertEqual(book1['likes_count'], 1)
+        # self.assertEqual(book1['likes_count'], 1)
         self.assertEqual(book1['annotated_likes'], 1)
 
     def test_get_filter(self):
