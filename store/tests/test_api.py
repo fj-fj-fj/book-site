@@ -1,7 +1,9 @@
 import json
 
 from django.contrib.auth.models import User
+from django.db import connection
 from django.db.models import Count, Case, When, Avg, F
+from django.test.utils import CaptureQueriesContext
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.exceptions import ErrorDetail
@@ -22,7 +24,16 @@ class BooksApiTestCase(APITestCase):
 
     def test_get(self):
         url = reverse('book-list')
-        response = self.client.get(url)
+
+        # test `select_related` and `prefetch_related`
+        with CaptureQueriesContext(connection) as queries:
+            response = self.client.get(url)
+
+            # without `prefetch_related` or 'select_related` 2 != 4
+            # without `prefetch_related` and 'select_related` 2 != 6
+            # with `prefetch_related` and 'select_related`:
+            self.assertEqual(2, len(queries))
+
         books = Book.objects.all().annotate(
             annotated_likes=Count(Case(When(userbookrelation__like=True, then=1))),
             rating=Avg('userbookrelation__rate'),
@@ -33,7 +44,6 @@ class BooksApiTestCase(APITestCase):
         self.assertEqual(serializer_data, response.data)
         book1, = [book for book in serializer_data if book.get('name') == 'test1']
         self.assertEqual(book1['rating'], '5.00')
-        # self.assertEqual(book1['likes_count'], 1)
         self.assertEqual(book1['annotated_likes'], 1)
 
     def test_get_filter(self):

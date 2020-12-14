@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from django.db.models import Count, Case, When, Avg, F
-# InvalidOperation: from django.db.models import ExpressionWrapper, DecimalField
 from django.test import TestCase
 
 from store.models import Book, UserBookRelation
@@ -36,7 +35,6 @@ class BookSerializerTestCase(TestCase):
                 'name': 'test1',
                 'price': '25.00',
                 'author': 'author 1',
-                # 'likes_count': 3,
                 'annotated_likes': 3,
                 'rating': '4.67',
                 'discount': '3.00',
@@ -62,7 +60,6 @@ class BookSerializerTestCase(TestCase):
                 'name': 'test2',
                 'price': '55.00',
                 'author': 'author 2',
-                # 'likes_count': 2,
                 'annotated_likes': 2,
                 'rating': '3.50',
                 'discount': '0.00',

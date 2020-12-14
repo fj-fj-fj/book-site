@@ -17,10 +17,6 @@ class Book(models.Model):
         return self.discount != 0
 
 
-    # NOTE: сделать is_published, черновик (разные состояния книги),
-    # чтобы можно было ее редактировать и снимать с публикации
-
-
 class UserBookRelation(models.Model):
     RATE_CHOICES = (
         (1, 'Ok'),
@@ -29,8 +25,6 @@ class UserBookRelation(models.Model):
         (4, 'Amazing'),
         (5, 'Incredible')
     )
-    # если like (или [просмотр, ...])без юзера нужен книге для популярности
-    # то сам по себе like, без книги, нужен для анализа юзера
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     book = models.ForeignKey(Book, on_delete=models.SET_NULL, null=True)
     like = models.BooleanField(default=False)
