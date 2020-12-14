@@ -174,8 +174,4 @@ media/
 # !**/migrations
 # !**/migrations/__init__.py
 local.py
-foo.py
-bar.py
-sick.py
-requirements-dev.txt
 story/
