@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'db',
+        'HOST': 'books_db',
         'PORT': 5432,
         'OPTIONS': {
             'client_encoding': 'UTF8',
@@ -103,7 +103,7 @@ if os.environ.get('GITHUB_WORKFLOW'):
            'NAME': 'github_actions',
            'USER': 'postgres',
            'PASSWORD': 'postgres',
-           'HOST': '127.0.0.1',
+           'HOST': 'books_db',
            'PORT': 5432,
            'OPTIONS': {
             'client_encoding': 'UTF8',

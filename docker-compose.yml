@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  db:
+  books_db:
     image: postgres
     volumes:
       - ./data/db:/var/lib/postgresql/data
@@ -18,7 +18,7 @@ services:
     ports:
       - "8000:8000"
     links:
-      - db
+      - books_db
     depends_on:
       - migration
 
@@ -29,6 +29,6 @@ services:
     volumes:
       - .:/app
     links:
-      - db
+      - books_db
     depends_on:
-      - db
+      - books_db
