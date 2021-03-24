@@ -179,3 +179,5 @@ local.py
 
 **/debug_toolbar/**
 staticfiles/admin/**
+
+data/

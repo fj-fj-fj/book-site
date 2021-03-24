@@ -24,10 +24,11 @@ SECRET_KEY = '@&k%3ug(4@+uckpdgk9_9_7)$_1d0x2@k+h6!o6qi+izqce0fk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# This value is not safe for production usage.
+# https://docs.djangoproject.com/en/1.11/ref/settings/#allowed-hosts
+ALLOWED_HOSTS = ['*']
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
 ]
 
 INTERNAL_IPS = [
-    '127.0.0.1',
+    '127.0.0.1', '*'
 ]
 
 MIDDLEWARE = [
@@ -84,11 +85,14 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'books_db',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': '078677',
-        'HOST': 'localhost',
-        'PORT': '',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
+        'OPTIONS': {
+            'client_encoding': 'UTF8',
+        },
     }
 }
 
@@ -100,7 +104,10 @@ if os.environ.get('GITHUB_WORKFLOW'):
            'USER': 'postgres',
            'PASSWORD': 'postgres',
            'HOST': '127.0.0.1',
-           'PORT': '5432',
+           'PORT': 5432,
+           'OPTIONS': {
+            'client_encoding': 'UTF8',
+        },
         }
     }
 
