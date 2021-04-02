@@ -52,4 +52,4 @@ python manage.py migrate
 ```
 You can then access the webapp via http://127.0.0.1:8000/book/
 #
-:heavy_exclamation_mark: Modify the config in `.env` and add it to `.gitignore`
+:heavy_exclamation_mark: Add all sercrets into `.envrc` 

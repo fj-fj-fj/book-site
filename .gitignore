@@ -142,7 +142,7 @@ celerybeat-schedule.*
 *.sage.py
 
 # # dotenv
-# .env
+.envrc
 
 # virtualenv
 .venv
@@ -174,7 +174,7 @@ media/
 # **/migrations/**
 # !**/migrations
 # !**/migrations/__init__.py
-local.py
+
 .story/
 
 **/debug_toolbar/**
