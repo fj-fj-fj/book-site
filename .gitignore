@@ -142,6 +142,7 @@ celerybeat-schedule.*
 *.sage.py
 
 # # dotenv
+.env
 .envrc
 
 # virtualenv

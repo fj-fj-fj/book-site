@@ -1,8 +1,10 @@
-import os
+from configurations import values
 
 from core.settings.base import BaseConfiguration
 
 
 class Prod(BaseConfiguration):
+
     DEBUG = False
-    SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+    SECRET_KEY = values.Value()
+    ALLOWED_HOSTS = values.Value()

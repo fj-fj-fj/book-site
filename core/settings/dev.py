@@ -1,11 +1,10 @@
 import os
-from configurations import values
 
 from core.settings.base import BaseConfiguration
 
 
 class Dev(BaseConfiguration):
-    DEBUG = values.BooleanValue(default=True, environ_name='DEBUG')
+
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
     ALLOWED_HOSTS = ['*']

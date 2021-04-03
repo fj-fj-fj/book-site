@@ -6,6 +6,7 @@ from configurations import Configuration
 
 class BaseConfiguration(Configuration):
 
+    DEBUG = True
     LANGUAGE_CODE = 'en-us'
     TIME_ZONE = 'UTC'
     USE_I18N = True
