@@ -14,22 +14,7 @@
 git clone https://github.com/fj-fj-fj/djangoREST-book-site.git
 cd djngoREST-book-site
 ```
-#### Docker  :whale:
-```bash
-docker-compose up --build
-# postgres:314MB app:176MB
-```
-
-#### Or running natively  :gear:
-```pgsql
-sudo -u postgres psql
-postgres=# create database myproject;
-postgres=# create user djangouser with encrypted password 'djangopassword';
-postgres=# alter user djangouser createdb;
-postgres=# grant all privileges on database myproject to djangouser;
-postgres=# \q
-```
-#### Set your sercrets to `.envrc`  :heavy_exclamation_mark:
+#### Set your sercrets to `.envrc` :heavy_exclamation_mark: [`Direnv on GitHub`](https://github.com/direnv/direnv)
 
 ```bash
 # EXAMPLE:
@@ -48,7 +33,22 @@ export DATABASE_URL=postgres://postgres:postgres@api_db:5432/postgres
 export SOCIAL_AUTH_GITHUB_KEY=your_api_key
 export SOCIAL_AUTH_GITHUB_SECRET=your_api_secret
 ```
-[`Direnv on GitHub`](https://github.com/direnv/direnv)
+#### Use Docker  :whale:
+```bash
+docker-compose up --build
+# postgres:314MB app:176MB
+```
+
+#### Or running natively  :gear:
+```pgsql
+sudo -u postgres psql
+postgres=# create database myproject;
+postgres=# create user djangouser with encrypted password 'djangopassword';
+postgres=# alter user djangouser createdb;
+postgres=# grant all privileges on database myproject to djangouser;
+postgres=# \q
+```
+
 ```bash
 # a few more steps 😊
 
@@ -69,4 +69,4 @@ python manage.py migrate
 # Run the dev server
 ./manage.py runserver
 ```
-You can then access the webapp via http://127.0.0.1:8000/book/
+You can then access the webapp via [`http://127.0.0.1:8000/book/`](http://127.0.0.1:8000/book/)
