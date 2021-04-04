@@ -36,7 +36,6 @@ flake8==3.9.0
   - pyflakes [required: >=2.3.0,<2.4.0, installed: 2.3.1]
 pipdeptree==2.0.0
   - pip [required: >=6.0.0, installed: 20.3.4]
-pkg-resources==0.0.0
 psycopg2-binary==2.8.6
 setuptools==44.1.1
 social-auth-app-django==4.0.0
