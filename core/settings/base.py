@@ -1,10 +1,13 @@
 import os
+from pathlib import Path
 
 import dj_database_url
 from configurations import Configuration
 
 
 class BaseConfiguration(Configuration):
+
+    ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 
     DEBUG = True
     LANGUAGE_CODE = 'en-us'
