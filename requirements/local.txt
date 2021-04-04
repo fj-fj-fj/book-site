@@ -1,0 +1,14 @@
+-r ./base.txt
+
+coverage==5.5
+django-debug-toolbar==3.2
+django-debug-toolbar-force==0.1.8
+django-environ==0.4.5
+django-nine==0.2.4
+flake8==3.9.0
+mccabe==0.6.1
+pycodestyle==2.7.0
+pyflakes==2.3.1
+pytz==2021.1
+six==1.15.0
+sqlparse==0.4.1
