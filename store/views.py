@@ -1,4 +1,4 @@
-from django.db.models import Count, Case, When, Avg, F
+from django.db.models import Count, Case, When, F
 from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
