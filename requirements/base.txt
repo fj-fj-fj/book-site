@@ -3,9 +3,7 @@ certifi==2020.12.5
 cffi==1.14.5
 chardet==4.0.0
 
-# NOTE: DOCKER ERROR: Failed building wheel for cryptography==3.4.6
 cryptography==3.4.7
-
 defusedxml==0.7.1
 dj-database-url==0.5.0
 Django==3.1.7

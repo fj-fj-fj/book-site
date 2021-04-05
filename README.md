@@ -2,6 +2,7 @@
 
 [![Python](https://img.shields.io/static/v1?label=Python&style=plastic&logofor-the-badge&message=3&color=3776AB&logo=PYTHON)](https://www.python.org/)
 [![djangorestframework](https://img.shields.io/badge/django-rest-framework?style=flat&logo=djangorest)](https://www.django-rest-framework.org/)
+[![PostgresQL](https://img.shields.io/badge/-PostgreSQL-blue?style=flat&logo=postgresql)](https://www.postgresql.org/)
 [![CI](https://github.com/fj-fj-fj/djangoREST-book-site/actions/workflows/test-app.yml/badge.svg)](https://github.com/fj-fj-fj/djangoREST-book-site/actions/workflows/test-app.yml)
 
 
