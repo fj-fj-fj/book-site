@@ -36,6 +36,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the stack
-      run: docker-compose build
+      run: docker-compose build --build-arg REQUIREMENT_FILE_NAME=local.txt
     - name: Run migrations
       run: docker-compose run -e DJANGO_CONFIGURATION=Test api python manage.py migrate

@@ -14,7 +14,7 @@
 git clone https://github.com/fj-fj-fj/djangoREST-book-site.git
 cd djngoREST-book-site
 ```
-#### Set your sercrets to `.envrc` :heavy_exclamation_mark: [`Direnv on GitHub`](https://github.com/direnv/direnv)
+Set your sercrets to `.envrc` :heavy_exclamation_mark: [`Direnv on GitHub`](https://github.com/direnv/direnv)
 
 ```bash
 # EXAMPLE:
@@ -26,17 +26,17 @@ export DJANGO_SETTINGS_MODULE=core.settings
 export DJANGO_CONFIGURATION=Dev
 export DJANGO_ALLOWED_HOSTS=*
 export POSTGRES_DB=postgres
-export POSTGRES_HOST=api_db  # according to docker-compose.yml/services/api_db
+export POSTGRES_HOST=api_db  # =api_db if using Docker else 127.0.0.1
 export POSTGRES_USER=postgres
 export POSTGRES_PASSWORD=postgres
-export DATABASE_URL=postgres://postgres:postgres@api_db:5432/postgres
+export DATABASE_URL=postgres://postgres:postgres@${POSTGRES_HOST}:5432/postgres
 export SOCIAL_AUTH_GITHUB_KEY=your_api_key
 export SOCIAL_AUTH_GITHUB_SECRET=your_api_secret
 ```
 #### Use Docker  :whale:
 ```bash
-docker-compose up --build
-# postgres:314MB app:176MB
+docker-compose build --build-arg REQUIREMENT_FILE_NAME=local.txt
+docker-compose up
 ```
 
 #### Or running natively  :gear:
