@@ -4,11 +4,11 @@ cffi==1.14.5
 chardet==4.0.0
 
 # NOTE: DOCKER ERROR: Failed building wheel for cryptography==3.4.6
-cryptography==3.1.1
+cryptography==3.4.7
 
 defusedxml==0.7.1
 dj-database-url==0.5.0
-Django==3.1.4
+Django==3.1.7
 django-configurations==2.2
 django-filter==2.4.0
 djangorestframework==3.12.2

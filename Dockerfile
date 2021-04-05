@@ -9,7 +9,7 @@ ENV REQUIREMENT_FILE_NAME=$REQUIREMENT_FILE_NAME
 
 RUN mkdir /install
 RUN apk add --update alpine-sdk \
-    && apk add libffi-dev openssl-dev postgresql-dev gcc python3-dev musl-dev
+    && apk add libffi-dev openssl-dev postgresql-dev gcc python3-dev musl-dev cargo
 
 WORKDIR /install
 
