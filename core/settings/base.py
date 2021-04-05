@@ -17,7 +17,7 @@ class BaseConfiguration(Configuration):
     USE_TZ = True
 
     DATABASES = {
-        'default': dj_database_url.config()
+        'default': dj_database_url.config(),
     }
 
     ROOT_URLCONF = 'core.urls'
@@ -89,7 +89,7 @@ class BaseConfiguration(Configuration):
         ),
         'DEFAULT_PARSER_CLASSES': (
             'rest_framework.parsers.JSONParser',
-        )
+        ),
     }
 
     SOCIAL_AUTH_POSTGRES_JSONFIELD = True

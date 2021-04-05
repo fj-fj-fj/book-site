@@ -1,4 +1,5 @@
 from django.db.models import Count, Case, When, F
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
@@ -12,13 +13,13 @@ from store.serializers import BooksSerializer, UserBookRelationSerializer
 
 
 class BookViewSet(ModelViewSet):
-    queryset = Book.objects.all().annotate(
+    queryset = (Book.objects.all().annotate(
         annotated_likes=Count(Case(When(userbookrelation__like=True, then=1))),
-        # rating=Avg('userbookrelation__rate'),
-        discount_price=F('price') - F('discount')
-    ).select_related('owner') \
-     .prefetch_related('readers') \
+        discount_price=F('price') - F('discount'),
+    ).select_related('owner')
+     .prefetch_related('readers')
      .order_by('id')
+    )
 
     serializer_class = BooksSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
@@ -27,7 +28,7 @@ class BookViewSet(ModelViewSet):
     search_fields = ['name', 'author']
     ordering_fields = ['price', 'author']
 
-    def perform_create(self, serializer):
+    def perform_create(self, serializer) -> None:
         serializer.validated_data['owner'] = self.request.user
         serializer.save()
 
@@ -38,11 +39,13 @@ class UserBookRelationView(UpdateModelMixin, GenericViewSet):
     serializer_class = UserBookRelationSerializer
     lookup_field = 'book'
 
-    def get_object(self):
-        obj, _ = UserBookRelation.objects.get_or_create(user=self.request.user,
-                                                        book_id=self.kwargs['book'])
+    def get_object(self) -> UserBookRelation:
+        obj, _ = UserBookRelation.objects.get_or_create(
+            user=self.request.user,
+            book_id=self.kwargs['book'],
+        )
         return obj
 
 
-def auth(request):
+def auth(request: HttpRequest) -> HttpResponse:
     return render(request, 'oauth.html')

@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# flake8: noqa
 import os
 import sys
 
@@ -14,7 +15,7 @@ def main():
         # issue is really that Django is missing to avoid masking other
         # exceptions on Python 2.
         try:
-            import django  # noqa
+            import django
         except ImportError:
             raise ImportError(
                 "Couldn't import Django. Are you sure it's installed and "

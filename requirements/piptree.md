@@ -37,7 +37,21 @@ flake8==3.9.0
 pipdeptree==2.0.0
   - pip [required: >=6.0.0, installed: 20.3.4]
 psycopg2-binary==2.8.6
-setuptools==44.1.1
+safety==1.10.3
+  - Click [required: >=6.0, installed: 7.1.2]
+  - dparse [required: >=0.5.1, installed: 0.5.1]
+    - packaging [required: Any, installed: 20.9]
+      - pyparsing [required: >=2.0.2, installed: 2.4.7]
+    - pyyaml [required: Any, installed: 5.4.1]
+    - toml [required: Any, installed: 0.10.2]
+  - packaging [required: Any, installed: 20.9]
+    - pyparsing [required: >=2.0.2, installed: 2.4.7]
+  - requests [required: Any, installed: 2.25.1]
+    - certifi [required: >=2017.4.17, installed: 2020.12.5]
+    - chardet [required: >=3.0.2,<5, installed: 4.0.0]
+    - idna [required: >=2.5,<3, installed: 2.10]
+    - urllib3 [required: >=1.21.1,<1.27, installed: 1.26.4]
+  - setuptools [required: Any, installed: 44.1.1]
 social-auth-app-django==4.0.0
   - six [required: Any, installed: 1.15.0]
   - social-auth-core [required: >=3.3.0, installed: 4.1.0]

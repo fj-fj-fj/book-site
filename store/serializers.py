@@ -12,20 +12,21 @@ class BookReaderSerializer(ModelSerializer):
 
 
 class BooksSerializer(ModelSerializer):
-    annotated_likes = serializers.IntegerField(read_only=True)
-
-    rating = serializers.DecimalField(max_digits=3, decimal_places=2, read_only=True)
-    discount_price = serializers.FloatField(read_only=True)
-    owner_name = serializers.CharField(source='owner.username', default='', read_only=True)
-    readers = BookReaderSerializer(many=True, read_only=True)
 
     class Meta:
         model = Book
         fields = (
             'id', 'name', 'price', 'author',
             'annotated_likes', 'rating', 'discount',
-            'discount_price', 'owner_name', 'readers'
+            'discount_price', 'owner_name', 'readers',
         )
+
+    annotated_likes = serializers.IntegerField(read_only=True)
+
+    rating = serializers.DecimalField(max_digits=3, decimal_places=2, read_only=True)
+    discount_price = serializers.FloatField(read_only=True)
+    owner_name = serializers.CharField(source='owner.username', default='', read_only=True)
+    readers = BookReaderSerializer(many=True, read_only=True)
 
 
 class UserBookRelationSerializer(ModelSerializer):
