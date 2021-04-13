@@ -1,0 +1,25 @@
+[run]
+data_file = reports/.coverage
+branch = True
+source = .
+omit =
+    ./venv/*,
+    *admin*,
+    *asgi*,
+    *apps.py,
+    *manage.py,
+    *migrations*,
+    *tests*,
+    *wsgi*,
+    *__init__*
+
+[report]
+ignore_errors = True
+exclude_lines =
+   pragma: no cover
+   raise NotImplementedError
+   if __name__ == .__main__.:
+
+[html]
+title = DjangoREST-book-site Test Coverage Report
+directory = reports/cover
