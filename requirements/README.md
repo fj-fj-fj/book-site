@@ -1,7 +1,7 @@
-[`pipdeptree`](https://pypi.org/project/pipdeptree/)
+# full dev requirements
 ```
-pipdeptree==2.0.0
-  - pip [required: >=6.0.0, installed: 20.3.4]
+# pip [required: >=6.0.0, installed: 20.3.4]
+
 coverage==5.5
 dj-database-url==0.5.0
 django-configurations==2.2
@@ -19,7 +19,6 @@ django-debug-toolbar-force==0.1.8
       - pytz [required: Any, installed: 2021.1]
       - sqlparse [required: >=0.2.2, installed: 0.4.1]
   - six [required: >=1.4.1, installed: 1.15.0]
-django-environ==0.4.5
 django-filter==2.4.0
   - Django [required: >=2.2, installed: 3.1.7]
     - asgiref [required: >=3.2.10,<4, installed: 3.3.1]
@@ -34,6 +33,7 @@ flake8==3.9.0
   - mccabe [required: >=0.6.0,<0.7.0, installed: 0.6.1]
   - pycodestyle [required: >=2.7.0,<2.8.0, installed: 2.7.0]
   - pyflakes [required: >=2.3.0,<2.4.0, installed: 2.3.1]
+isort==5.8.0
 psycopg2-binary==2.8.6
 safety==1.10.3
   - Click [required: >=6.0, installed: 7.1.2]

@@ -16,10 +16,10 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework.routers import SimpleRouter
 
-from store.views import BookViewSet, auth, UserBookRelationView
+from store.views import BookViewSet, UserBookRelationView, auth
 
 router = SimpleRouter()
 
@@ -35,8 +35,9 @@ urlpatterns = [
 urlpatterns += router.urls
 
 if settings.DEBUG:
-    import debug_toolbar
     import mimetypes
+
+    import debug_toolbar
 
     mimetypes.add_type('application/javascript', '.js', True)
     urlpatterns = [path('__debug__/', include(debug_toolbar.urls))] + urlpatterns

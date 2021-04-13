@@ -1,6 +1,6 @@
 from django.db.models import Avg
 
-from store.models import UserBookRelation, Book
+from store.models import Book, UserBookRelation
 
 
 def set_rating(book: Book) -> None:

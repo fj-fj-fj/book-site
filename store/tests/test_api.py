@@ -2,7 +2,7 @@ import json
 
 from django.contrib.auth.models import User
 from django.db import connection
-from django.db.models import Count, Case, When, Avg, F
+from django.db.models import Avg, Case, Count, F, When
 from django.test.utils import CaptureQueriesContext
 from django.urls import reverse
 from rest_framework import status
