@@ -2,7 +2,7 @@
 
 coverage==5.5
 click==7.1.2
-django-debug-toolbar==3.2
+django-debug-toolbar==3.2.1
 django-debug-toolbar-force==0.1.8
 django-nine==0.2.4
 dparse==0.5.1
