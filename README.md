@@ -4,6 +4,7 @@
 [![djangorestframework](https://img.shields.io/badge/django-rest-framework?style=flat&logo=djangorest)](https://www.django-rest-framework.org/)
 [![PostgresQL](https://img.shields.io/badge/-PostgreSQL-blue?style=flat&logo=postgresql)](https://www.postgresql.org/)
 [![CI](https://github.com/fj-fj-fj/djangoREST-book-site/actions/workflows/test-app.yml/badge.svg)](https://github.com/fj-fj-fj/djangoREST-book-site/actions/workflows/test-app.yml)
+[![Updates](https://pyup.io/repos/github/fj-fj-fj/djangoREST-book-site/shield.svg)](https://pyup.io/repos/github/fj-fj-fj/djangoREST-book-site/)
 
 
 ###### Featuring drf and Oauth
@@ -20,7 +21,7 @@ Set your sercrets to `.envrc` :heavy_exclamation_mark: [`Direnv on GitHub`](http
 ```bash
 # EXAMPLE:
 
-# ./.envrc (store in .gitignore)
+# ./.envrc (echo .envrc >> .gitignore)
 export DEBUG=True
 export DJANGO_SECRET_KEY=your_django_key
 export DJANGO_SETTINGS_MODULE=core.settings
