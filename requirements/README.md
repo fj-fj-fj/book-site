@@ -7,26 +7,26 @@ dj-database-url==0.5.0
 django-configurations==2.2
   - six [required: Any, installed: 1.15.0]
 django-debug-toolbar==3.2
-  - Django [required: >=2.2, installed: 3.1.7]
-    - asgiref [required: >=3.2.10,<4, installed: 3.3.1]
+  - Django [required: >=2.2, installed: 3.2]
+    - asgiref [required: >=3.3.2,<4, installed: 3.3.4]
     - pytz [required: Any, installed: 2021.1]
     - sqlparse [required: >=0.2.2, installed: 0.4.1]
   - sqlparse [required: >=0.2.0, installed: 0.4.1]
 django-debug-toolbar-force==0.1.8
   - django-nine [required: >=0.2.3, installed: 0.2.4]
-    - Django [required: Any, installed: 3.1.7]
-      - asgiref [required: >=3.2.10,<4, installed: 3.3.1]
+    - Django [required: Any, installed: 3.2]
+      - asgiref [required: >=3.3.2,<4, installed: 3.3.4]
       - pytz [required: Any, installed: 2021.1]
       - sqlparse [required: >=0.2.2, installed: 0.4.1]
   - six [required: >=1.4.1, installed: 1.15.0]
 django-filter==2.4.0
-  - Django [required: >=2.2, installed: 3.1.7]
-    - asgiref [required: >=3.2.10,<4, installed: 3.3.1]
+  - Django [required: >=2.2, installed: 3.2]
+    - asgiref [required: >=3.3.2,<4, installed: 3.3.4]
     - pytz [required: Any, installed: 2021.1]
     - sqlparse [required: >=0.2.2, installed: 0.4.1]
 djangorestframework==3.12.2
-  - django [required: >=2.2, installed: 3.1.7]
-    - asgiref [required: >=3.2.10,<4, installed: 3.3.1]
+  - django [required: >=2.2, installed: 3.2]
+    - asgiref [required: >=3.3.2,<4, installed: 3.3.4]
     - pytz [required: Any, installed: 2021.1]
     - sqlparse [required: >=0.2.2, installed: 0.4.1]
 flake8==3.9.0
