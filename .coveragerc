@@ -16,9 +16,10 @@ omit =
 [report]
 ignore_errors = True
 exclude_lines =
-   pragma: no cover
-   raise NotImplementedError
-   if __name__ == .__main__.:
+    if self.debug:
+    pragma: no cover
+    raise NotImplementedError
+    if __name__ == '__main__':
 
 [html]
 title = DjangoREST-book-site Test Coverage Report
