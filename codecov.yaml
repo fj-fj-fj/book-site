@@ -1,0 +1,20 @@
+coverage:
+  status:
+    patch: false
+
+  range: 70..85
+  round: down
+  precision: 2
+
+ignore:
+  - ".venv/*"
+  - "*admin*"
+  - "*asgi*"
+  - "*manage.py"
+  - "*migrations*"
+  - "*tests*"
+  - "*wsgi*"
+  - "*__init__.py"
+
+comment:
+  layout: diff, files

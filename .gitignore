@@ -67,7 +67,8 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
-reports/
+**/cover/**
+!.gitkeep
 *.cover
 .hypothesis/
 

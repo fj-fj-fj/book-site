@@ -32,7 +32,7 @@ install:
 
 run:
 	make db
-	./manage.py runservser
+	./manage.py runserver
 
 db:
 	service postgresql start

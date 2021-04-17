@@ -1,4 +1,4 @@
-# Online Library
+# Book site
 
 [![Python](https://img.shields.io/static/v1?label=Python&style=plastic&logofor-the-badge&message=3&color=3776AB&logo=PYTHON)](https://www.python.org/)
 [![djangorestframework](https://img.shields.io/badge/django-rest-framework?style=flat&logo=djangorest)](https://www.django-rest-framework.org/)
