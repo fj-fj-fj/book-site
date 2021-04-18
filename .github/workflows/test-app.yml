@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  lint:
+  test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -33,14 +33,20 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Coverage runing
+    - name: Generate coverage report
+      env:
+        DJANGO_SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        DATABASE_URL: 'sqlite://:memory:'
       run: |
-        pip install coverage
-        coverage run django test
-    - name: Upload Codecov
+        pip install -r ./requirements/local.txt
+        coverage run ./manage.py test --settings=core.settings.test
+        coverage xml
+    - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1.4.0
       with:
         env_vars: OS,PYTHON
+        file: ./coverage.xml
+        flags: unittests
 
   docker_test:
 
