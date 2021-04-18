@@ -3,8 +3,11 @@
 [![Python](https://img.shields.io/static/v1?label=Python&style=plastic&logofor-the-badge&message=3&color=3776AB&logo=PYTHON)](https://www.python.org/)
 [![djangorestframework](https://img.shields.io/badge/django-rest-framework?style=flat&logo=djangorest)](https://www.django-rest-framework.org/)
 [![PostgresQL](https://img.shields.io/badge/-PostgreSQL-blue?style=flat&logo=postgresql)](https://www.postgresql.org/)
+
+
 [![CI](https://github.com/fj-fj-fj/djangoREST-book-site/actions/workflows/test-app.yml/badge.svg)](https://github.com/fj-fj-fj/djangoREST-book-site/actions/workflows/test-app.yml)
 [![Updates](https://pyup.io/repos/github/fj-fj-fj/djangoREST-book-site/shield.svg)](https://pyup.io/repos/github/fj-fj-fj/djangoREST-book-site/)
+[![codecov](https://codecov.io/gh/fj-fj-fj/book-site/branch/main/graph/badge.svg/token=SNfA1GJF7J)](https://codecov.io/gh/fj-fj-fj/book-site)
 
 
 ###### Featuring drf and Oauth
