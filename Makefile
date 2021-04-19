@@ -1,7 +1,7 @@
 WSL_CHROME_EXE = "${BROWSER}"
 PATH_TO_COVERAGE_INDEX_HTML = ${HTMLCOV}
 
-.PHONY: clean, install, install-dev, db, run, help, tests
+.PHONY: clean db install install-dev isort help run tests types
 .DEFAULT_GOAL : help
 
 help:
@@ -40,8 +40,14 @@ db:
 style:
 	flake8 .
 
+types:
+	mypy .
+
+isort:
+	isort .
+
 tests:
-	python manage.py test
+	./manage.py test
 
 coverage:
 	coverage run --source='.' ./manage.py test .
@@ -65,6 +71,8 @@ security:
 	safety check -r requirements/base.txt --full-report
 
 check:
+	make isort
 	make style
+	make types
 	make tests
 	make security

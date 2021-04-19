@@ -24,6 +24,21 @@ django-filter==2.4.0
     - asgiref [required: >=3.3.2,<4, installed: 3.3.4]
     - pytz [required: Any, installed: 2021.1]
     - sqlparse [required: >=0.2.2, installed: 0.4.1]
+django-stubs==1.8.0
+  - django [required: Any, installed: 3.2]
+    - asgiref [required: >=3.3.2,<4, installed: 3.3.4]
+    - pytz [required: Any, installed: 2021.1]
+    - sqlparse [required: >=0.2.2, installed: 0.4.1]
+  - django-stubs-ext [required: Any, installed: 0.2.0]
+    - django [required: Any, installed: 3.2]
+      - asgiref [required: >=3.3.2,<4, installed: 3.3.4]
+      - pytz [required: Any, installed: 2021.1]
+      - sqlparse [required: >=0.2.2, installed: 0.4.1]
+  - mypy [required: >=0.790, installed: 0.812]
+    - mypy-extensions [required: >=0.4.3,<0.5.0, installed: 0.4.3]
+    - typed-ast [required: >=1.4.0,<1.5.0, installed: 1.4.3]
+    - typing-extensions [required: >=3.7.4, installed: 3.7.4.3]
+  - typing-extensions [required: Any, installed: 3.7.4.3]
 djangorestframework==3.12.2
   - django [required: >=2.2, installed: 3.2]
     - asgiref [required: >=3.3.2,<4, installed: 3.3.4]
@@ -34,6 +49,10 @@ flake8==3.9.0
   - pycodestyle [required: >=2.7.0,<2.8.0, installed: 2.7.0]
   - pyflakes [required: >=2.3.0,<2.4.0, installed: 2.3.1]
 isort==5.8.0
+mypy==0.812
+  - mypy-extensions [required: >=0.4.3,<0.5.0, installed: 0.4.3]
+  - typed-ast [required: >=1.4.0,<1.5.0, installed: 1.4.3]
+  - typing-extensions [required: >=3.7.4, installed: 3.7.4.3]
 psycopg2-binary==2.8.6
 safety==1.10.3
   - Click [required: >=6.0, installed: 7.1.2]

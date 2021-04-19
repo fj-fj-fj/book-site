@@ -15,13 +15,13 @@ class Dev(BaseConfiguration):
     ]
 
     @property
-    def INSTALLED_APPS(self) -> list[str]:
+    def INSTALLED_APPS(self) -> list[str]:  # type: ignore
         return super().INSTALLED_APPS + [
             'debug_toolbar',
         ]
 
     @property
-    def MIDDLEWARE(self) -> list[str]:
+    def MIDDLEWARE(self) -> list[str]:  # type: ignore
         return super().MIDDLEWARE + [
             'debug_toolbar_force.middleware.ForceDebugToolbarMiddleware',
         ]
