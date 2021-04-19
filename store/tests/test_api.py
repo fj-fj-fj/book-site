@@ -1,4 +1,5 @@
 import json
+from operator import itemgetter
 
 from django.contrib.auth.models import User
 from django.db import connection
@@ -79,8 +80,9 @@ class BooksApiTestCase(APITestCase):
             discount_price=F('price') - F('discount')
         )
         serializer_data = BooksSerializer(books, many=True).data
+        with_reverse_price = [d for d in sorted(serializer_data, key=itemgetter('price'), reverse=True)]
         self.assertEqual(status.HTTP_200_OK, response.status_code)
-        self.assertEqual(serializer_data, response.data)
+        self.assertEqual(with_reverse_price, response.data)
 
     def test_create(self):
         self.assertEqual(3, Book.objects.all().count())
@@ -129,8 +131,13 @@ class BooksApiTestCase(APITestCase):
         self.assertEqual(status.HTTP_403_FORBIDDEN, response.status_code)
         self.book1.refresh_from_db()
         self.assertEqual(25, self.book1.price)
-        self.assertEqual({'detail': ErrorDetail(string='You do not have permission to perform this action.',
-                                                code='permission_denied')}, response.data)
+        self.assertEqual(
+            {'detail': ErrorDetail(
+                string='You do not have permission to perform this action.',
+                code='permission_denied'
+            )},
+            response.data
+        )
 
     def test_update_not_owner_but_staff(self):
         self.user2 = User.objects.create(username='test_username2', is_staff=True)
