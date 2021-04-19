@@ -22,18 +22,14 @@ cd book-site
 Set your sercrets to `.envrc` :heavy_exclamation_mark: [`Direnv on GitHub`](https://github.com/direnv/direnv)
 
 ```bash
-# EXAMPLE:
+# ./envrc contains
 
-# ./.envrc (echo .envrc >> .gitignore)
 export DEBUG=True
-export DJANGO_SECRET_KEY=your_django_key
+export DJANGO_SECRET_KEY=your_django_secret_key
 export DJANGO_SETTINGS_MODULE=core.settings
 export DJANGO_CONFIGURATION=Dev
 export DJANGO_ALLOWED_HOSTS=*
-export POSTGRES_DB=postgres
-export POSTGRES_HOST=api_db  # =api_db if using Docker else 127.0.0.1
-export POSTGRES_USER=postgres
-export POSTGRES_PASSWORD=postgres
+export POSTGRES_HOST=api_db  # if Docker is used else 127.0.0.1
 export DATABASE_URL=postgres://postgres:postgres@${POSTGRES_HOST}:5432/postgres
 export SOCIAL_AUTH_GITHUB_KEY=your_api_key
 export SOCIAL_AUTH_GITHUB_SECRET=your_api_secret
@@ -75,3 +71,8 @@ python manage.py migrate
 ./manage.py runserver
 ```
 You can then access the webapp via [`http://127.0.0.1:8000/book/`](http://127.0.0.1:8000/book/)
+
+#
+### License
+
+Available under the MIT License. Full text is in the LICENSE [file](LICENSE)
