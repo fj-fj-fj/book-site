@@ -6,7 +6,7 @@
 
 
 [![CI](https://github.com/fj-fj-fj/djangoREST-book-site/actions/workflows/test-app.yml/badge.svg)](https://github.com/fj-fj-fj/djangoREST-book-site/actions/workflows/test-app.yml)
-[![Updates](https://pyup.io/repos/github/fj-fj-fj/djangoREST-book-site/shield.svg)](https://pyup.io/repos/github/fj-fj-fj/djangoREST-book-site/)
+[![Updates](https://pyup.io/repos/github/fj-fj-fj/book-site/shield.svg)](https://pyup.io/repos/github/fj-fj-fj/book-site/)
 [![codecov](https://codecov.io/gh/fj-fj-fj/book-site/branch/main/graph/badge.svg/token=SNfA1GJF7J)](https://codecov.io/gh/fj-fj-fj/book-site)
 
 
@@ -16,8 +16,8 @@
 #
 # Installation
 ```bash
-git clone https://github.com/fj-fj-fj/djangoREST-book-site.git
-cd djngoREST-book-site
+git clone https://github.com/fj-fj-fj/book-site.git
+cd book-site
 ```
 Set your sercrets to `.envrc` :heavy_exclamation_mark: [`Direnv on GitHub`](https://github.com/direnv/direnv)
 
