@@ -1,15 +1,15 @@
-import os
 from pathlib import Path
 
 import dj_database_url
-from configurations import Configuration
+from configurations import Configuration, values
+from django.utils.log import DEFAULT_LOGGING
 
 
 class BaseConfiguration(Configuration):
 
     ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 
-    DEBUG = True
+    DEBUG = values.BooleanValue(True)
     LANGUAGE_CODE = 'en-us'
     TIME_ZONE = 'UTC'
     USE_I18N = True
@@ -99,5 +99,62 @@ class BaseConfiguration(Configuration):
         'django.contrib.auth.backends.ModelBackend',
     )
 
-    SOCIAL_AUTH_GITHUB_KEY = os.getenv('SOCIAL_AUTH_GITHUB_KEY')
-    SOCIAL_AUTH_GITHUB_SECRET = os.getenv('SOCIAL_AUTH_GITHUB_SECRET')
+    SOCIAL_AUTH_GITHUB_KEY = values.Value(environ_name='SOCIAL_AUTH_GITHUB_KEY', environ_prefix=None)
+    SOCIAL_AUTH_GITHUB_SECRET = values.Value(environ_name='SOCIAL_AUTH_GITHUB_SECRET', environ_prefix=None)
+
+    # logging
+    (LOG_DIR := Path(ROOT_DIR.parent / 'log')).is_dir() or LOG_DIR.mkdir(parents=True, exist_ok=True)  # type: ignore
+    (WARNING_FILE := LOG_DIR / 'warning.log').is_file() or WARNING_FILE.touch(exist_ok=True)  # type: ignore
+
+    LOGGING_CONFIG = None
+    LOGLEVEL = values.Value(environ_name='DJANGO_LOG_LEVEL', default='INFO')
+    BASE_LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'console': {
+                'format': '{module}: {message}',
+                'datefmt': '%d/%b/%Y %H:%M:%S',
+                'style': '{',
+            },
+            'file': {
+                'format': (
+                    '[{asctime}] - {levelname} - ({module}:{lineno}) - '
+                    '{process:d} - {thread:d} -- {message}'
+                ),
+                'style': '{',
+            },
+        },
+        'handlers': {
+            'console': {
+                'level': 'INFO',
+                'class': 'logging.StreamHandler',
+                'formatter': 'console',
+            },
+            'file': {
+                'level': 'WARNING',
+                'class': 'logging.FileHandler',
+                'filename': WARNING_FILE,
+                'formatter': 'file',
+            },
+        },
+        'loggers': {
+            '': {
+                'handlers': ['console'],
+                'level': 'INFO',
+            },
+            'core': {
+                'handlers': ['console', 'file'],
+                'level': LOGLEVEL,
+                'propagate': False,
+            },
+            'core.accounts': {
+                'handlers': ['console', 'file'],
+                'level': LOGLEVEL,
+                'propagate': False,
+            },
+        },
+    }
+
+    for key in 'formatters', 'handlers', 'loggers':
+        BASE_LOGGING[key]['django.server'] = DEFAULT_LOGGING[key]['django.server']  # type: ignore

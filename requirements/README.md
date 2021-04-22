@@ -54,6 +54,11 @@ mypy==0.812
   - typed-ast [required: >=1.4.0,<1.5.0, installed: 1.4.3]
   - typing-extensions [required: >=3.7.4, installed: 3.7.4.3]
 psycopg2-binary==2.8.6
+rich==10.1.0
+  - colorama [required: >=0.4.0,<0.5.0, installed: 0.4.4]
+  - commonmark [required: >=0.9.0,<0.10.0, installed: 0.9.1]
+  - pygments [required: >=2.6.0,<3.0.0, installed: 2.8.1]
+  - typing-extensions [required: >=3.7.4,<4.0.0, installed: 3.7.4.3]
 safety==1.10.3
   - Click [required: >=6.0, installed: 7.1.2]
   - dparse [required: >=0.5.1, installed: 0.5.1]
