@@ -1,7 +1,7 @@
 WSL_CHROME_EXE = "${BROWSER}"
 PATH_TO_COVERAGE_INDEX_HTML = ${HTMLCOV}
 
-.PHONY: clean db install install-dev isort help run tests types
+.PHONY: install install-dev help db run clean coverage check
 .DEFAULT_GOAL : help
 
 help:
@@ -30,12 +30,11 @@ install:
 	pip install -r requirements.txt
 	echo skipping pip install -r requirements/local.txt
 
-run:
-	make db
-	./manage.py runserver
-
 db:
 	service postgresql start
+
+run: db
+	./manage.py runserver
 
 style:
 	flake8 .
@@ -55,7 +54,7 @@ coverage:
 	coverage html
 	$(WSL_CHROME_EXE) $(PATH_TO_COVERAGE_INDEX_HTML)
 
-clean: clean-pyc, clean-test
+clean: clean-pyc, clean-test, clean-UFO
 
 clean-pyc:
 	find . -name '*.pyc' -exec rm -f {} +
@@ -64,15 +63,19 @@ clean-pyc:
 	find . -name '__pycache__' -exec rm -fr {} +
 
 clean-test:
+	GLOBIGNORE=.gitkeep
 	rm -fv ./reports/.coverage
 	rm -fv reports/cover/*
+	unset GLOBIGNORE
+
+# QSND}JJ, z... I don't know what the fuck is this
+clean-UFO:
+	rm -f -- QSND}JJ ; rm -f -- z
+	git rm -f --ignore-unmatch QSND}JJ z
 
 security:
 	safety check -r requirements/base.txt --full-report
 
 check:
-	make isort
-	make style
-	make types
-	make tests
+	make -j4 isort style types tests
 	make security
