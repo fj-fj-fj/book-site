@@ -8,7 +8,7 @@ class Dev(BaseConfiguration):
     SECRET_KEY = values.SecretValue(environ_name='SECRET_KEY')
 
     ALLOWED_HOSTS = ['*']
-    INTERNAL_IPS = ['*']
+    INTERNAL_IPS = ['127.0.0.1']
 
     EMAIL_BACKEND = values.Value('django.core.mail.backends.console.EmailBackend')
 
@@ -21,6 +21,7 @@ class Dev(BaseConfiguration):
     @property
     def MIDDLEWARE(self) -> list[str]:  # type: ignore
         return super().MIDDLEWARE + [
+            'debug_toolbar.middleware.DebugToolbarMiddleware',
             'debug_toolbar_force.middleware.ForceDebugToolbarMiddleware',
         ]
 

@@ -26,12 +26,14 @@ urlpatterns: URLList = [
 urlpatterns += router.urls
 
 if settings.DEBUG:
-    import mimetypes
 
-    import debug_toolbar
+    if 'debug_toolbar' in settings.INSTALLED_APPS:
+        import mimetypes
 
-    mimetypes.add_type('application/javascript', '.js', True)
+        import debug_toolbar
 
-    urlpatterns = [
-        path('__debug__/', include(debug_toolbar.urls))
-    ] + urlpatterns  # type: ignore
+        mimetypes.add_type('application/javascript', '.js', True)
+
+        urlpatterns = [
+            path('__debug__/', include(debug_toolbar.urls))
+        ] + urlpatterns  # type: ignore
