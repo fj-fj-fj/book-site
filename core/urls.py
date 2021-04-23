@@ -17,7 +17,8 @@ router.register(r'book', BookViewSet)
 router.register(r'book_relation', UserBookRelationView)
 
 urlpatterns: URLList = [
-    path('admin/', admin.site.urls),
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    path(settings.ADMIN_BASE_URL, admin.site.urls),
     url('', include('social_django.urls', namespace='social')),
     path('auth/', auth),
 ]

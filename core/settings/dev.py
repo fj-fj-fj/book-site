@@ -8,11 +8,9 @@ class Dev(BaseConfiguration):
     SECRET_KEY = values.SecretValue(environ_name='SECRET_KEY')
 
     ALLOWED_HOSTS = ['*']
-    INTERNAL_IPS = [
-        'localhost',
-        '127.0.0.1',
-        '[::1]',
-    ]
+    INTERNAL_IPS = ['*']
+
+    EMAIL_BACKEND = values.Value('django.core.mail.backends.console.EmailBackend')
 
     @property
     def INSTALLED_APPS(self) -> list[str]:  # type: ignore

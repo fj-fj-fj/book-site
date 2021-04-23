@@ -33,6 +33,7 @@ class BaseConfiguration(Configuration):
     ]
     THIRD_PARTY_APPS = [
         'social_django',
+        'admin_honeypot',
     ]
     LOCAL_APPS = [
         'store',
@@ -92,6 +93,18 @@ class BaseConfiguration(Configuration):
         ),
     }
 
+    # email
+    ADMIN_BASE_URL = values.Value(environ_name='ADMIN_BASE_URL')
+
+    EMAIL_BACKEND = values.Value('django.core.mail.backends.smtp.EmailBackend')
+    EMAIL_TIMEOUT = 5
+    ADMINS = [
+        ('fj-fj-fj', values.Value(environ_name='ADMIN_BASE_EMAIL')),
+    ]
+    MANAGERS = ADMINS
+    ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+    # social auth
     SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 
     AUTHENTICATION_BACKENDS = (
