@@ -24,7 +24,7 @@ PyYAML==5.4.1
 rich==10.1.0
 safety==1.10.3
 six==1.15.0
-sqlparse==0.4.1
+sqlparse==0.4.2
 typed-ast==1.4.3
 typing-extensions==3.7.4.3
 toml==0.10.2
